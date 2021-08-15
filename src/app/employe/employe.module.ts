@@ -10,6 +10,8 @@ import { ListPresentationComponent } from './list-container/list-presentation/li
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { EmployeService } from './employe.service';
+import { FilterPipe } from './list-container/list-presentation/filter.pipe';
 
 
 @NgModule({
@@ -18,13 +20,16 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     FormContainerComponent,
     FormPresentationComponent,
     ListContainerComponent,
-    ListPresentationComponent
+    ListPresentationComponent,
+    FilterPipe
   ],
   imports: [
     CommonModule,
     EmployeRoutingModule,
     ReactiveFormsModule,
     HttpClientModule
-  ]
+  ],
+  providers:[EmployeService],
+  entryComponents: [FormPresentationComponent]
 })
 export class EmployeModule { }

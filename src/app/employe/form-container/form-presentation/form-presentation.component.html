@@ -1,1 +1,74 @@
 <p>form-presentation works!</p>
+<div class="container">
+    <form class="row" [formGroup]="userForm">
+
+        <div class="col-md-9">
+            <label for="fname" class="form-label">First Name: </label>
+            <input type="text" class="form-control" formControlName="fname" id="fname" required>
+        </div>
+        <span class="text-danger"
+            *ngIf="(userFormControl.fname.touched || submitted) && userFormControl.fname.errors?.required">
+            First Name is Required
+        </span>
+
+
+        <div class="col-md-9">
+            <label for="lname" class="form-label">Last Name: </label>
+            <input type="text" class="form-control" formControlName="lname" id="lname" required>
+        </div>
+        <span class="text-danger"
+            *ngIf="(userFormControl.lname.touched || submitted) && userFormControl.lname.errors?.required">
+            Last Name is required
+        </span>
+
+        <div class="col-md-9">
+            <label for="birthdate" class="form-label">Date Of Birth: </label>
+            <input type="date" class="form-control" formControlName="birthdate" id="birthdate" required>
+        </div>
+        <span class="text-danger"
+            *ngIf="(userFormControl.birthdate.touched || submitted) && userFormControl.birthdate.errors?.required">
+            Date of birth is required
+        </span>
+
+        <div class="col-md-9">
+            <label for="gender" class="form-label">Gender: </label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="gender" id="male" formControlName='gender'
+                    value="male" checked>
+                <label class="form-check-label" for="male">
+                    Male
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="gender" formControlName='gender' id="female"
+                    value="female">
+                <label class="form-check-label" for="female">
+                    Female
+                </label>
+            </div>
+        </div>
+
+        <span class="text-danger"
+            *ngIf="(userFormControl.gender.touched || submitted) && userFormControl.gender.errors?.required">
+            Your Gender is required
+        </span>
+
+
+        <div class="col-md-9">
+            <label for="department" class="form-label">Department: </label>
+            <input type="text" class="form-control" formControlName="department" id="department" required>
+
+        </div>
+        <span class="text-danger"
+            *ngIf="(userFormControl.department.touched || submitted) && userFormControl.department.errors?.required">
+            Department name is required
+        </span>
+
+        <div class="col-9">
+            <button class="btn btn-primary" type="submit" [disabled]="!userForm.valid" routerlink="/Employe"
+                (click)="onSubmit()">Submit</button>
+            <input class="btn btn-primary" type="reset" value="Clear">
+        </div>
+
+    </form>
+</div>

@@ -1,1 +1,103 @@
 <p>list-presentation works!</p>
+<div>
+
+     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" title="add" routerLink='add' >
+        Add
+    </button>
+    <!--     <div class="col-md-3">
+        <div class="form-group mb-4">
+            <label>Search</label>
+            <input class="form-control" type="text" [(ngModel)]="searchText" placeholder="Search">
+        </div>
+    </div> -->
+
+    <table class="table table-responsive table-hover">
+
+        <thead>
+            <tr>
+                <th scope="col">
+
+                    <span>Id</span>
+                </th>
+
+                <th class="" aria-hidden="true" scope="pointer" (click)="sortData('fname')">
+                    <span>First Name </span>
+                    <span class="fa fa-sort"></span>
+                    <span *ngIf="key =='fname'"
+                        [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+                <th scope="pointer" (click)="sortData('lname')">
+                    <span>Last Name </span>
+                    <span class="fa fa-sort"></span>
+                    <span class="glyphicon sort-icon" *ngIf="key =='lname'"
+                        [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+                <th scope="col">
+                    <span>Date of Birth </span>
+                </th>
+                <th scope="col">
+                    <span>Gender </span>
+                </th>
+                <th scope="col" (click)="sortData('department')">
+                    <span>Department </span>
+                    <span class="fa fa-sort"></span>
+                    <span class="glyphicon sort-icon" *ngIf="key =='department'"
+                        [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+
+                <th scope="col">Action</th>
+
+            </tr>
+        </thead>
+        <tbody *ngFor="let userlist of employlist">
+            <tr>
+                <td> {{userlist.id}} </td>
+                <td> {{userlist.fname}} </td>
+                <td> {{userlist.lname}} </td>
+                <td> {{userlist.birthdate}} </td>
+                <td> {{userlist.gender}} </td>
+                <td> {{userlist.department}} </td>
+
+                <td>
+
+                    <!--  <button class="fa fa-ellipsis-v"> -->
+                    <div class="dropdown">
+                        <button class="fa fa-ellipsis-h" type="button" id="dropdownMenu2" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            <button class="dropdown-item" type="button"
+                                routerLink="/employe/Edit/{{userlist.id}}">Edit</button>
+                            <button class="dropdown-item" type="button"
+                                (click)="deleteuserdetail(userlist.id)">Delete</button>
+
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </li>
+        </ul>
+    </nav> -->
+    <!--  <ng-template #noResults>
+        <p>No results found for "{{searchText}}".</p>
+    </ng-template> -->
+</div>
