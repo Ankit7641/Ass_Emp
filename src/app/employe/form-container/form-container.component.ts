@@ -29,12 +29,15 @@ export class FormContainerComponent implements OnInit {
   // Data will add to employeService
   public adduserdetail(user: Employe) {
     if(this.id){
+      
       this.restApi.updateuserdetail(this.id,user).subscribe(()=>{
+        this.restApi.getuserdetails();
+        this.location.back();
       })
+    
     }
     else
     {
-    debugger
     this.restApi.adduserdetail(user).subscribe((user: any) => {
       this.restApi.getuserdetails();
       this.location.back();

@@ -8,7 +8,7 @@ import { FormPresentationComponent } from './form-container/form-presentation/fo
 import { ListContainerComponent } from './list-container/list-container.component';
 import { ListPresentationComponent } from './list-container/list-presentation/list-presentation.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EmployeService } from './employe.service';
 import { FilterPipe } from './list-container/list-presentation/filter.pipe';
@@ -27,7 +27,8 @@ import { FilterPipe } from './list-container/list-presentation/filter.pipe';
     CommonModule,
     EmployeRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers:[EmployeService],
   entryComponents: [FormPresentationComponent]

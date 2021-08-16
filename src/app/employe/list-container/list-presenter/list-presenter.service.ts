@@ -9,11 +9,12 @@ export class ListPresenterService {
   public userId: Subject<any> = new Subject();
   public userId$!: Observable<any>;
   employe: any=[];
+  clss!: string;
+  msg!: string;
 
   constructor(public restApi:EmployeService) { 
 
-    this.userId$ = this.userId.asObservable();
-    
+    this.userId$ = this.userId.asObservable(); 
   }
 
   public bindForm() {
@@ -37,7 +38,6 @@ export class ListPresenterService {
 
   // Delete user detail 
   public deleteuserdetail(id: number) {
-    debugger
     console.log('delete', id);
     if (window.confirm('Are you sure, you want to delete?')) {
       this.restApi.deleteuserdetail(id).subscribe(data => {
@@ -48,12 +48,40 @@ export class ListPresenterService {
 
   // Sort
   public order(order: string): string {
-    debugger
     if (order === 'asc') {
       return 'desc';
     } else {
       return 'asc';
     }
   }
+
+  // Multiple Delete Record
+
+  checkAllCheckBox(ev: { target: { checked: any; }; }) {
+		this.employe.forEach((x: { checked: any; }) => x.checked = ev.target.checked)
+	}
+
+	isAllCheckBoxChecked() {
+		return this.employe.every((p: { checked: any; }) => p.checked);
+	}
+	
+	deleteEmploy(): void {
+		const selectedEmploye = this.employe.filter((employ: { checked: any; }) => employ.checked).map((p: { id: any; }) => p.id);
+		//console.log (selectedProducts);
+		
+		if(selectedEmploye && selectedEmploye.length > 0) {
+			this.restApi.deleteEmploy(selectedEmploye)
+				.subscribe((res: any) => {
+					this.clss = 'grn';
+					this.msg = 'Employes successfully deleted';
+					}, (err: any) => {
+                        this.clss = 'rd';
+						this.msg = 'Something went wrong during deleting Employe';
+                    }
+                );
+		} else {
+			
+		}
+	}
   
 }

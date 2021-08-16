@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Employe } from './employe.model';
 
 @Injectable()
@@ -49,8 +49,30 @@ export class EmployeService {
 
   //sort
   getUsersAll(key:string,order:string):Observable<any>{
-    debugger
     return this.http.get<any>(`${this.apiURL+'/employe/'}?q=&_sort=${key}&_order=${order}`)
+  }
+
+  // Delete Multiple records
+  deleteEmploy(id: number[]) {
+	  if (confirm("Are you sure to delete?")) {
+		const data = {'id' : id};
+		const url = `${this.apiURL}/delete/employe`;
+		const options = {
+			headers: new HttpHeaders({
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			}),
+			responseType: 'text' as 'json'
+		};
+		
+		const resp = this.http.post<any>(url, data, options);//.map(resp => {return resp;}).catch(err => {console.log(err);});
+		
+		//console.log('resp: ' + resp);
+		
+		return resp;
+	  }
+	  
+	  return of({});
   }
 
 }

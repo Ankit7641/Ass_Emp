@@ -12,11 +12,13 @@ import { ListPresenterService } from '../list-presenter/list-presenter.service';
 })
 export class ListPresentationComponent implements OnInit {
 
+  searchText!: string;
 
   //sort
   public  reverse!: boolean;
   public orderType!: string;
   public key!: string;
+  employe: any;
 
   @Input() public set employlist( id: Employe[]) {
     if (id) {
@@ -54,6 +56,11 @@ export class ListPresentationComponent implements OnInit {
   public deleteuserdetail(id: number) {
     this.userservice.deleteuserdetail(id)
   }
+
+  // Multiple Delete
+  public deleteEmploy(){
+    this.userservice.deleteEmploy()
+  }
 //sort
   public sortData(key: string): void {
     this.reverse = !this.reverse;
@@ -61,5 +68,4 @@ export class ListPresentationComponent implements OnInit {
     this.orderType = this.userservice.order(this.orderType);
     this.sort.emit({ key: this.key, order: this.orderType });
   }
-
 }

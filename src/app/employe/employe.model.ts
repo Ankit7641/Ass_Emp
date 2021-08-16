@@ -5,5 +5,5 @@ export class Employe {
     birthdate!: string;
     gender!: string;
     department!: string;
-    enabled?: string;
+    enabled?: boolean;
 }

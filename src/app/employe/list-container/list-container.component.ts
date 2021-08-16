@@ -31,12 +31,10 @@ export class ListContainerComponent implements OnInit {
     this.location.back();
   }
   private getUsers(): void {
-    debugger
     this.employlist$ = this.userservice.getUsersAll( this.fieldName, this.orderAs);
   }
 
   public sort(value:any): void {
-    debugger
     this.fieldName = value.key;
     this.orderAs = value.order;
     this.getUsers();

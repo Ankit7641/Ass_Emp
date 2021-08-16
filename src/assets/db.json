@@ -1,20 +1,52 @@
 {
   "employe": [
     {
-      "id": 1,
       "fname": "Tony",
       "lname": "Stark",
       "birthdate": "06-08-1996",
-      "gender": "Male",
-      "department": "IT"
+      "gender": "M",
+      "department": "IT",
+      "id": 1
     },
     {
-      "id": 2,
       "fname": "Black",
       "lname": "Widow",
       "birthdate": "25-09-1996",
-      "gender": "Male",
-      "department": "IT"
+      "gender": "F",
+      "department": "IT",
+      "id": 2
+    },
+    {
+      "fname": "jon",
+      "lname": "biden",
+      "birthdate": "2003-06-18",
+      "gender": "M",
+      "department": "Marketing",
+      "id": 4
+    },
+    {
+      "fname": "Ankit",
+      "lname": "Prajapati",
+      "birthdate": "2021-08-09",
+      "gender": "M",
+      "department": "sales",
+      "id": 5
+    },
+    {
+      "fname": "Hiren",
+      "lname": "tandel",
+      "birthdate": "2021-08-03",
+      "gender": "M",
+      "department": "Marketing",
+      "id": 6
+    },
+    {
+      "fname": "Gaurang",
+      "lname": "valia",
+      "birthdate": "2021-08-16",
+      "gender": "M",
+      "department": "sales",
+      "id": 7
     }
   ]
 }

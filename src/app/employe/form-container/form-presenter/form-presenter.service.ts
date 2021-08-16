@@ -13,12 +13,11 @@ export class FormPresenterService {
   }
 
   public bindForm(){
-     // Value wiil be bind from fromdata
      return this.fb.group({
-      fname: new FormControl('', [Validators.required]),
-      lname: new FormControl('', [Validators.required]),
+      fname: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]),
+      lname: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]),
       birthdate: new FormControl('', [Validators.required]),
-      gender: new FormControl('', [Validators.required, Validators.email]),
+      gender: new FormControl('', [Validators.required]),
       department: new FormControl('', [Validators.required])
     });
   }

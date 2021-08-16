@@ -19,10 +19,11 @@ export class FormPresentationComponent implements OnInit {
 
   @Input() public set employlistbyId(id: Employe[]) {
     if (id) {
-      debugger
+      if (window.confirm('Are you sure, you want to Edit?')) {
       this._employlistbyId = id
       this.userForm.patchValue(this.employlistbyId)
     }
+  }
   }
 
   public get employlistbyId(): Employe[] {
